@@ -18,6 +18,10 @@ public abstract class Stall {
         return name;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
     public String getOwnerName() {
         return ownerName;
     }
