@@ -1,5 +1,7 @@
 package attractions;
+import people.Visitor;
 
+import behaviours.ITicketed;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,10 +9,14 @@ import static org.junit.Assert.assertEquals;
 
 public class PlaygroundTest {
     Playground playground;
+    Visitor visitor;
+    Visitor visitor1;
 
     @Before
     public void setUp() throws Exception {
         playground = new Playground("Fun Zone", 7);
+        visitor = new Visitor(12, 156, 20.00);
+        visitor1 = new Visitor(19, 176, 30.00);
     }
 
     @Test
@@ -26,5 +32,15 @@ public class PlaygroundTest {
     @Test
     public void hasVisitCount() {
         assertEquals(0, playground.getVisitCount());
+    }
+
+    @Test
+    public void isAllowedTo() {
+        assertEquals(true, playground.isAllowedTo(visitor));
+    }
+
+    @Test
+    public void isNotAllowedTo() {
+        assertEquals(false, playground.isAllowedTo(visitor1));
     }
 }
